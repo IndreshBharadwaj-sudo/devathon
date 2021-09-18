@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="stylesheets/dev.css"/>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <title>Announcements</title>
+  </head>
+
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">HOME</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="/login_faculty">FACULTY_LOGIN <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="/login_student">STUDENT_LOGIN</a>
+          <a class="nav-item nav-link" href="/register_faculty">FACULTY_REGISTER</a>
+          <a class="nav-item nav-link disabled" href="/register_student">STUDENT_REGISTER</a>
+          <a class="nav-item nav-link disabled" href="/faculty_view">FACULTY_VIEW</a>
+          <a class="nav-item nav-link disabled" href="/student_view">STUDENT_VIEW</a>
+        </div>
+      </div>
+    </nav>
+    <header id="top">
+      <div class="overlay">
+        <h1>College Calendar</h1>
+        <br />
+      </div>
+    </header>
+    <iframe
+      class="rounded border-primary"
+      src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FKolkata&src=amFpbmFwdXJ2MzVAZ21haWwuY29t&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4uaW5kaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5&color=%2333B679&color=%230B8043"
+      style="border: solid 2px black; margin: 1%"
+      width="97%"
+      height="600"
+      frameborder="0"
+      scrolling="no"
+    ></iframe>
+    <div class="fix"></div>
+    <section class="announcements">
+      <div class="overlay">
+        <h1>Announcements</h1>
+        <br />
+      </div>
+    </section>
+
+
+    <div class="py-5 px-5 announce container-fluid">
+      <div class="row px-5">
+        <div class="col-sm-6">
+          <div class="card card-flip mb-3 border-primary" style="width: 80%">
+            <div class="card-front">
+              <div class="card-header card-title text-center">
+                <strong>GENERAL ANNOUNCEMENTS</strong>
+                <div class="postcard__bar"></div>
+              </div>
+              <div class="card-body">
+                <div class="card-text">
+                  <% for(let announcement of announcements){ %>
+                    <a href="#">
+                      <strong>XX XXX XXXX :- </strong><%=announcement.description%>
+                    </a>
+                    <br /><br />
+                    <% } %>
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="card-header card-title text-center">
+                <strong>GENERAL ANNOUNCEMENTS</strong>
+                <div class="postcard__bar"></div>
+              </div>
+              <div class="card-body">
+                <div class="card-text">
+                  <% for(let announcement of announcements){ %>
+                  <a href="#">
+                    <strong>XX XXX XXXX :- </strong><%=announcement.description%>
+                  </a>
+                  <br /><br />
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card card-flip mb-3 border-primary" style="width: 80%">
+            <div class="card-front">
+              <div class="card-header card-title text-center">
+                <strong>SPECIFIC ANNOUNCEMENTS</strong>
+                <div class="postcard__bar"></div>
+              </div>
+              <div class="card-body">
+                <div class="card-text">
+                  <% for(let announcement of announcements){ %>
+                    <a href="#">
+                      <strong>XX XXX XXXX :- </strong><%=announcement.description%>
+                    </a>
+                    <br /><br />
+                    <% } %>
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="card-header card-title text-center">
+                <strong>SPECIFIC ANNOUNCEMENTS</strong>
+                <div class="postcard__bar"></div>
+              </div>
+              <div class="card-body">
+                <div class="card-text">
+                  <% for(let announcement of announcements){ %>
+                    <a href="#">
+                      <strong>XX XXX XXXX :- </strong><%=announcement.description%>
+                    </a>
+                    <br /><br />
+                    <% } %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <a href="#top"
+      ><button class="btn btn-primary scroll-top" type="button">
+        <i class="fa fa-arrow-up"></i></button
+    ></a>
+    <footer class="text-center">
+      <div class="btns pt-3">
+        <a href="#">
+          <button class="btn btn-dark mx-1">
+            <i class="fa fa-facebook fa-2x"></i></button
+        ></a>
+        <a href="#"
+          ><button class="btn btn-dark mx-1">
+            <i class="fa fa-instagram fa-2x"></i></i></button
+        ></a>
+        <a href="#"
+          ><button class="btn btn-dark mx-1">
+            <i class="fa fa-linkedin fa-2x"></i></i></button
+        ></a>
+      </div>
+      <h4 class="text-center">Thanks for visiting our website.</h4>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
