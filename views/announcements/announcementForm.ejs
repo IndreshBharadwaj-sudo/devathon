@@ -11,31 +11,89 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Announcement Form</h1>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <!-- <a class="navbar-brand" href="/">HOME</a> -->
+    <button
+      class="navbar-toggler btn-light"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active text-white" href="/"
+          >HOME<span class="sr-only">(current)</span></a
+        >
+      </div>
+        <!-- <a class="nav-item nav-link active" href="/login_faculty">FACULTY_LOGIN</a>
+          <a class="nav-item nav-link" href="/login_student">STUDENT_LOGIN</a>
+          <a class="nav-item nav-link" href="/register_faculty">FACULTY_REGISTER</a>
+          <a class="nav-item nav-link disabled" href="/register_student">STUDENT_REGISTER</a>
+          <a class="nav-item nav-link disabled" href="/student_view">STUDENT_VIEW</a> -->
+          <div class="navbar-nav">
+        <a
+          class="nav-item nav-link active text-white"
+          style="color: black;"
+          href="/logout"
+          >LOGOUT</a
+        >
+      </div>
+    </div>
+  </nav>
+
+
+    <h1 style="text-align: center;">Announcement Form</h1>
+    <div style="width: 70%; margin-left: auto; margin-right: auto;">
     <form action='/addannouncement' method="POST">
         <div class="form-group">
-          <label for="exampleInputEmail1">Announcement</label>
+          <label for="announcement" class="form-label">Announcement</label>
           <input type="input" class="form-control" id="announcement" name="announcement" aria-describedby="emailHelp" placeholder="Enter Announcement">
-          <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
         </div>
-        <!-- <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div> -->
         <h1>Select Related branches</h1>
         <div class="form-group form-check">
           <input type="checkbox" class="form-check-input" name="CSE" id="CSE">
-          <label class="form-check-label" for="exampleCheck1">CSE</label>
+          <label class="form-check-label" for="CSE">CSE</label>
         </div>
         <div class="form-group form-check">
           <input type="checkbox" class="form-check-input" name="ECE" id="ECE">
-          <label class="form-check-label" for="exampleCheck1">ECE</label>
+          <label class="form-check-label" for="ECE">ECE</label>
         </div>
         <div class="form-group form-check">
           <input type="checkbox" class="form-check-input" name="EEE" id="EEE">
-          <label class="form-check-label" for="exampleCheck1">EEE</label>
+          <label class="form-check-label" for="EEE">EEE</label>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" name="MECH" id="MECH">
+          <label class="form-check-label" for="MECH">MECH</label>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" name="CHEM" id="CHEM">
+          <label class="form-check-label" for="CHEM">CHEM</label>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" name="CIVIL" id="CIVIL">
+          <label class="form-check-label" for="CIVIL">CIVIL</label>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" name="MME" id="MME">
+          <label class="form-check-label" for="MME">MME</label>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" name="BIO" id="BIO">
+          <label class="form-check-label" for="BIO">BIO</label>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" name="ALL" id="ALL">
+          <label class="form-check-label" for="ALL">ALL Branches</label>
+        </div>
+        <button type="submit" class="btn btn-block btn-lg btn-primary">Submit</button>
       </form>
+    </div>
 </body>
 </html>

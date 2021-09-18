@@ -26,37 +26,76 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">HOME</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <!-- <a class="navbar-brand" href="/">HOME</a> -->
+      <button
+        class="navbar-toggler btn-light"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="/login_faculty">FACULTY_LOGIN <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="/login_student">STUDENT_LOGIN</a>
-          <a class="nav-item nav-link" href="/register_faculty">FACULTY_REGISTER</a>
-          <a class="nav-item nav-link disabled" href="/register_student">STUDENT_REGISTER</a>
-          <a class="nav-item nav-link disabled" href="/faculty_view">FACULTY_VIEW</a>
-          <a class="nav-item nav-link disabled" href="/student_view">STUDENT_VIEW</a>
+          <a class="nav-item nav-link active text-white" href="/"
+            >HOME<span class="sr-only">(current)</span></a
+          >
+        </div>
+          <!-- <a class="nav-item nav-link active" href="/login_faculty">FACULTY_LOGIN</a>
+            <a class="nav-item nav-link" href="/login_student">STUDENT_LOGIN</a>
+            <a class="nav-item nav-link" href="/register_faculty">FACULTY_REGISTER</a>
+            <a class="nav-item nav-link disabled" href="/register_student">STUDENT_REGISTER</a>
+            <a class="nav-item nav-link disabled" href="/student_view">STUDENT_VIEW</a> -->
+            <div class="navbar-nav">
+          <a
+            class="nav-item nav-link active text-white"
+            style="color: black;"
+            href="/logout"
+            >LOGOUT</a
+          >
         </div>
       </div>
     </nav>
+
+    <% if(seating=='zig') { %>
+      <a class="btn btn-success btn-block my-2" href="https://drive.google.com/file/d/1JexDhdp6ZlD1kDSAFAaKT_aGuCTWS3IF/view?usp=sharing">Click Here To View Seating Plan</a>
+      <% } else { %>
+
+        <% } %>
+    <% if(seating=='Decrease') { %>
+      <a class="btn btn-info btn-block my-2" href="https://drive.google.com/file/d/10uTGxp0Xn6MkOqAlqRSw_7DSlbgLmXz5/view?usp=sharing">Click Here To View Seating Plan</a>
+      <% } else { %>
+
+        <% } %>
+    <% if(seating=='Increase') { %>
+      <a class="btn btn-danger btn-block my-2" href="https://drive.google.com/file/d/1bE6fEMGGPGMF0juNqGZV6q82vtSm96ir/view?usp=sharing">Click Here To View Seating Plan</a>
+      <% } else { %>
+
+        <% } %>
+
+
     <header id="top">
       <div class="overlay">
         <h1>College Calendar</h1>
         <br />
       </div>
     </header>
+    <div style="display: flex; justify-content: center;">
     <iframe
-      class="rounded border-primary"
+      class="rounded border-primary mt-2 mb-2"
       src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FKolkata&src=amFpbmFwdXJ2MzVAZ21haWwuY29t&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4uaW5kaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5&color=%2333B679&color=%230B8043"
-      style="border: solid 2px black; margin: 1%"
-      width="97%"
-      height="600"
-      frameborder="0"
-      scrolling="no"
+      style="border: solid 2px black;"
+      width="50%"
+      height="500"
+      frameborder="4"
+      scrolling="yes"
     ></iframe>
+  </div>
     <div class="fix"></div>
     <section class="announcements">
       <div class="overlay">
@@ -77,7 +116,7 @@
               </div>
               <div class="card-body">
                 <div class="card-text">
-                  <% for(let announcement of announcements){ %>
+                  <% for(let announcement of announcementsALL1){ %>
                     <a href="#">
                       <strong>XX XXX XXXX :- </strong><%=announcement.description%>
                     </a>
@@ -93,7 +132,7 @@
               </div>
               <div class="card-body">
                 <div class="card-text">
-                  <% for(let announcement of announcements){ %>
+                  <% for(let announcement of announcementsALL2){ %>
                   <a href="#">
                     <strong>XX XXX XXXX :- </strong><%=announcement.description%>
                   </a>
@@ -113,7 +152,7 @@
               </div>
               <div class="card-body">
                 <div class="card-text">
-                  <% for(let announcement of announcements){ %>
+                  <% for(let announcement of announcementsSpecific1){ %>
                     <a href="#">
                       <strong>XX XXX XXXX :- </strong><%=announcement.description%>
                     </a>
@@ -129,7 +168,7 @@
               </div>
               <div class="card-body">
                 <div class="card-text">
-                  <% for(let announcement of announcements){ %>
+                  <% for(let announcement of announcementsSpecific2){ %>
                     <a href="#">
                       <strong>XX XXX XXXX :- </strong><%=announcement.description%>
                     </a>

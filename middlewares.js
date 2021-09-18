@@ -1,3 +1,5 @@
+const path = require("path/posix");
+
 module.exports.isLoggedIn=(req,res,next)=>{
     if (!req.isAuthenticated())
     {
@@ -8,7 +10,7 @@ module.exports.isLoggedIn=(req,res,next)=>{
 
 
 module.exports.isFaculty=(req,res,next)=>{
-    if (!req.role=='faculty')
+    if (req.user.role!='faculty')
     {
         return res.redirect('/');
     }
@@ -17,7 +19,7 @@ module.exports.isFaculty=(req,res,next)=>{
 
 
 module.exports.isStudent=(req,res,next)=>{
-    if (!req.role=='student')
+    if (req.user.role!='student')
     {
         return res.redirect('/');
     }

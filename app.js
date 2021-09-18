@@ -9,7 +9,9 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo');
 const LocalStrategy = require('passport-local');
 const Announcement=require('./models/announcements');
+const Seating=require('./models/seating');
 const {isLoggedIn,isFaculty,isStudent}=require("./middlewares");
+const announcements = require('./models/announcements');
 
 
 
@@ -79,7 +81,7 @@ app.get('/login_faculty',(req,res)=>{
 
 app.post('/login_faculty',passport.authenticate('local', { failureFlash: true, failureRedirect: '/login_faculty' }),(req,res)=>{
     req.role="faculty";
-    res.send("loggedin");
+    return res.redirect("/faculty_view");
 })
 
 
@@ -90,7 +92,7 @@ app.get('/login_student',(req,res)=>{
 
 app.post('/login_student',passport.authenticate('local', { failureFlash: true, failureRedirect: '/login_student' }),(req,res)=>{
     req.role="student";
-    res.send("loggedin");
+    return res.redirect("/student_view");
 })
 
 app.get('/register_faculty',(req,res)=>{
@@ -100,7 +102,8 @@ app.get('/register_faculty',(req,res)=>{
 
 
 app.post('/register_faculty',async (req,res)=>{
-    const { email, Username, password,branch } = req.body;
+    var { email, Username, password,branch } = req.body;
+    branch=branch.toUpperCase();
     const role="faculty";
     const user = new User({ email,Username,role,branch});
     const registeredUser = await User.register({email:email,username:Username,role:role,branch: branch},password);
@@ -109,10 +112,10 @@ app.post('/register_faculty',async (req,res)=>{
           if (err) return next(err);
           else
           {req.role="faculty";
-          return res.send("faculty_registered");
+        //   return res.redirect("/faculty_view");
         }
         })
-    return res.send("faculty_registered")
+        return res.redirect("/faculty_view");
 })
 
 app.get('/register_student',(req,res)=>{
@@ -121,20 +124,22 @@ app.get('/register_student',(req,res)=>{
 })
 
 app.post('/register_student',async (req,res)=>{
-    const { email, Username, password,branch } = req.body;
+    var { email, Username, password,branch } = req.body;
+    branch=branch.toUpperCase();
     const role="student";
     const user = new User({ email,Username,role,branch});
     const registeredUser = await User.register({email:email,username:Username,role:role,branch: branch},password);
     req.login(registeredUser, err =>
         {
-          if (err) return next(err);
+          if (err) return res.redirect('/');
           else
           {
           req.role="student";
-          return res.send("student_registered");
+          req.branch=branch;
+        //   return res.redirect("/student_view");
           }
         })
-    return res.send("student_registered")
+        return res.redirect("/student_view");
 })
 
 
@@ -142,10 +147,20 @@ app.get('/faculty_view',isLoggedIn,isFaculty,(req,res)=>{
     res.render('faculty_view/faculty_home')
 })
 
-app.get('/student_view',isLoggedIn,isStudent,async (req,res)=>{
-    const announcements= await Announcement.find({});
-    // console.log(announcements);
-    res.render('student_view/student_home',{announcements});
+app.get('/student_view',isLoggedIn,async (req,res)=>{
+    const announcementsALL= await Announcement.find({branches:"ALL"});
+    const announcementsSpecific= await Announcement.find({branches:req.user.branch});
+    const half = Math.ceil(announcementsALL.length / 2);
+    const announcementsALL1= announcementsALL.slice(0, half)
+    const announcementsALL2= announcementsALL.slice(-half)
+
+
+    const half2 = Math.ceil(announcementsSpecific.length / 2);
+    const announcementsSpecific1= announcementsSpecific.slice(0, half2)
+    const announcementsSpecific2= announcementsSpecific.slice(-half2)
+
+    const seatin= await Seating.find({branch:req.user.branch}).sort({ $natural: -1 }).limit(1);
+    res.render('student_view/student_home',{announcementsALL1,announcementsALL2,announcementsSpecific1,announcementsSpecific2,seating:seatin[0].seating});
 })
 
 app.get('/addannouncement',isLoggedIn,isFaculty,(req,res)=>{
@@ -160,8 +175,61 @@ app.post('/addannouncement',isLoggedIn,isFaculty,async (req,res)=>{
     announcement.branches.push('ECE');
     if(req.body.EEE)
     announcement.branches.push('EEE');
+    if(req.body.MECH)
+    announcement.branches.push('MECH');
+    if(req.body.CHEM)
+    announcement.branches.push('CHEM');
+    if(req.body.CIVIL)
+    announcement.branches.push('CIVIL');
+    if(req.body.MME)
+    announcement.branches.push('MME');
+    if(req.body.BIO)
+    announcement.branches.push('BIO');
+    if(req.body.ALL)
+    announcement.branches.push('ALL');
     await announcement.save();
-    res.send(announcement);
+    const announcementsALL= await Announcement.find({branches:"ALL"});
+    const announcementsSpecific= await Announcement.find({branches:req.user.branch});
+    
+    const half = Math.ceil(announcementsALL.length / 2);
+    const announcementsALL1= announcementsALL.slice(0, half)
+    const announcementsALL2= announcementsALL.slice(-half)
+
+
+    const half2 = Math.ceil(announcementsSpecific.length / 2);
+    const announcementsSpecific1= announcementsSpecific.slice(0, half2)
+    const announcementsSpecific2= announcementsSpecific.slice(-half2)
+
+    const seating= await Seating.find({branch:req.user.branch}).limit(1);
+
+    console.log(seating);
+
+    res.render('student_view/student_home',{announcementsALL1,announcementsALL2,announcementsSpecific1,announcementsSpecific2,seating});
+})
+
+app.get('/seating',(req,res)=>{
+    res.render('seatingPlan');
+})
+
+app.post('/seating',async (req,res)=>{
+    if(req.body.zig)
+    {const arrange=new Seating({seating: 'zig',branch: req.user.branch});
+    await arrange.save();
+}
+    if(req.body.Decrease)
+    {const arrange=new Seating({seating: 'Decrease',branch: req.user.branch});
+    await arrange.save();
+}
+    if(req.body.Increase)
+    {const arrange=new Seating({seating: 'Increase',branch: req.user.branch});
+    await arrange.save();
+}
+    res.render('faculty_view/faculty_home')
+})
+
+app.get('/logout',(req,res)=>{
+    req.logout();
+    return res.redirect("/");
 })
 
 

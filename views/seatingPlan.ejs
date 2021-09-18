@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="stylesheets/sap.css" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <script src="sap.js"></script>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <title>SAP</title>
+  </head>
+  <body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <!-- <a class="navbar-brand" href="/">HOME</a> -->
+        <button
+          class="navbar-toggler btn-light"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active text-white" href="/"
+              >HOME<span class="sr-only">(current)</span></a
+            >
+          </div>
+            <!-- <a class="nav-item nav-link active" href="/login_faculty">FACULTY_LOGIN</a>
+              <a class="nav-item nav-link" href="/login_student">STUDENT_LOGIN</a>
+              <a class="nav-item nav-link" href="/register_faculty">FACULTY_REGISTER</a>
+              <a class="nav-item nav-link disabled" href="/register_student">STUDENT_REGISTER</a>
+              <a class="nav-item nav-link disabled" href="/student_view">STUDENT_VIEW</a> -->
+              <div class="navbar-nav">
+            <a
+              class="nav-item nav-link active text-white"
+              style="color: black;"
+              href="/logout"
+              >LOGOUT</a
+            >
+          </div>
+        </div>
+      </nav>
+      
+    <header class="head">
+      <h1>SEATING ARRANGEMENT PLAN</h1><hr>
+    </header>
+    <div class="second container-fluid pr-0">
+      <div class="zigzag text-center mx-3">
+        <button onclick="zig()" class="btn btn-success" type="button">Zig Zag</button>
+        <img class="p-2" src="ko1.jpg" id="zi"></img>
+      </div>
+      <div class="inc text-center mx-3">
+        <button onclick="Increase()" class="btn btn-success" type="button">
+          Increasing
+        </button>
+        <img src="ko2.jpeg" id="incre"></img>
+      </div>
+      <div class="inc text-center mx-3">
+        <button onclick="Decrease()" class="btn btn-success" type="button">
+          Decreasing
+        </button>
+        <img src="ko3.jpeg"id="de"></img> 
+      </div>
+      <div class="fix"></div>
+    </div>
+    <form action="/seating" method="POST">
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" name="zig" id="zig" style="display: none;">
+            <label class="form-check-label" for="zig" style="display: none;">zig</label>
+          </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" name="Decrease" id="Decrease" style="display: none;">
+            <label class="form-check-label" for="Decrease" style="display: none;">Decrease</label>
+          </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" name="Increase" id="Increase" style="display: none;">
+            <label class="form-check-label" for="Increase" style="display: none;">Increase</label>
+          </div>
+          <button class="btn btn-success btn-block mb-1">SUBMIT</button>
+    </form>
+    <script>
+        function zig(){
+            
+            let zi=document.getElementById("zi");
+            let incre = document.getElementById("incre");
+            let de=document.getElementById("de");
+            document.getElementById("zig").checked = true;
+            document.getElementById("Decrease").checked = false;
+            document.getElementById("Increase").checked = false;
+            zi.style.display='block';
+            incre.style.display='none';
+            de.style.display='none';
+        }
+        function Decrease(){
+            
+            let zi=document.getElementById("zi");
+            let incre = document.getElementById("incre");
+            let de=document.getElementById("de");
+            document.getElementById("zig").checked = false;
+            document.getElementById("Decrease").checked = true;
+            document.getElementById("Increase").checked = false;
+            zi.style.display='none';
+            incre.style.display='none';
+            de.style.display='block';
+        }
+        function Increase(){
+            
+            let zi=document.getElementById("zi");
+            let incre = document.getElementById("incre");
+            let de=document.getElementById("de");
+            document.getElementById("zig").checked = false;
+            document.getElementById("Decrease").checked = false;
+            document.getElementById("Increase").checked = true;
+            zi.style.display='none';
+            incre.style.display='block';
+            de.style.display='none';
+        }
+    </script>
+  </body>
+</html>

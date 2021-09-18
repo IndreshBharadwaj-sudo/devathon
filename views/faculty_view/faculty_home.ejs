@@ -1,33 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
     <title>Document</title>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">HOME</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/login_faculty">FACULTY_LOGIN <span class="sr-only">(current)</span></a>
+    <style>
+      h1 {
+        font-family: "Nunito", sans-serif !important;
+        font-weight: 600;
+        font-size: 3.2rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        text-transform: uppercase;
+        color: white;
+      }
+      .three a button {
+        font-family: "Nunito", sans-serif !important;
+      }
+      .center {
+        margin-top: 4rem;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
+      body {
+        background-image: linear-gradient(
+          to right,
+          #67dc82,
+          #51da9c,
+          #46d6b1,
+          #4dd2c1,
+          #60cccb,
+          #66cbc5,
+          #6cc9bf,
+          #72c8b9,
+          #7dc8a0,
+          #94c684,
+          #b3c06a,
+          #d4b65a
+        );
+      }
+      @media only screen and (max-width: 768px) {
+        /* For mobile phones: */
+        h1 {
+          font-size: 2.3rem !important;
+        }
+        /* .three {
+          width: 100%;
+          overflow-x: hidden;
+        }
+        .three a button {
+          font-size: 1rem;
+        }
+        .three a {
+          width: 25%;
+          margin-right: 1rem;
+        } */
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <!-- <a class="navbar-brand" href="/">HOME</a> -->
+      <button
+        class="navbar-toggler btn-light"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active text-white" href="/"
+            >HOME<span class="sr-only">(current)</span></a
+          >
+        </div>
+          <!-- <a class="nav-item nav-link active" href="/login_faculty">FACULTY_LOGIN</a>
             <a class="nav-item nav-link" href="/login_student">STUDENT_LOGIN</a>
             <a class="nav-item nav-link" href="/register_faculty">FACULTY_REGISTER</a>
             <a class="nav-item nav-link disabled" href="/register_student">STUDENT_REGISTER</a>
-            <a class="nav-item nav-link disabled" href="/faculty_view">FACULTY_VIEW</a>
-            <a class="nav-item nav-link disabled" href="/student_view">STUDENT_VIEW</a>
-          </div>
+            <a class="nav-item nav-link disabled" href="/student_view">STUDENT_VIEW</a> -->
+            <div class="navbar-nav">
+          <a
+            class="nav-item nav-link active text-white"
+            style="color: black;"
+            href="/logout"
+            >LOGOUT</a
+          >
         </div>
-      </nav>
+      </div>
+    </nav>
+
     <h1>Faculty view</h1>
-      <a href="/addannouncement"><button class="btn btn-success">Add Announcement</button></a>
-</body>
+    <div class="three d-flex justify-content-around align-items-center">
+      <div class="row">
+        <a href="/addannouncement" class="col-md-4 my-3"
+          ><button class="btn btn-lg btn-success border-dark-success">
+            Add Announcement
+          </button></a
+        >
+        <a href="/student_view" class="col-md-4 my-3"
+          ><button class="btn btn-lg btn-info">View Announcements</button></a
+        >
+        <a href="/seating" class="col-md-4 my-3"
+          ><button class="btn btn-lg btn-warning text-white">
+            Set Seating Plan For Exams
+          </button></a
+        >
+      </div>
+    </div>
+    <img
+      class="center"
+      src="Shar.png"
+      alt=""
+    />
+  </body>
 </html>

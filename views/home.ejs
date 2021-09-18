@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/hack.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -11,22 +12,30 @@
     <title>Document</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">HOME</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/login_faculty">FACULTY_LOGIN <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/login_student">STUDENT_LOGIN</a>
-            <a class="nav-item nav-link" href="/register_faculty">FACULTY_REGISTER</a>
-            <a class="nav-item nav-link disabled" href="/register_student">STUDENT_REGISTER</a>
-            <a class="nav-item nav-link disabled" href="/faculty_view">FACULTY_VIEW</a>
-            <a class="nav-item nav-link disabled" href="/student_view">STUDENT_VIEW</a>
-          </div>
+
+      <header class="head">
+        <h1>ONLINE NOTIFIER</h1>
+      </header>
+      <div class="second container-fluid">
+        <div class="faculty text-center mx-3">
+          <h2>For Faculty</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,
+            corporis quis. Iste autem inventore, reiciendis repellat nobis quas
+            fuga veniam. Earum ipsam quasi provident cumque.
+          </p>
+           <a class="btn btn-primary" href="/register_faculty">Start uploading</a>
         </div>
-      </nav>
-    <h1>HOME</h1>
+        <div class="student text-center mx-3">
+          <h2>For Students</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,
+            corporis quis. Iste autem inventore, reiciendis repellat nobis quas
+            fuga veniam. Earum ipsam quasi provident cumque.
+          </p>
+          <a class="btn btn-primary" href="/register_student">Sign up & Stay updated</a>
+        </div>
+        <img src="Shar.png" alt="" />
+      </div>
 </body>
 </html>
